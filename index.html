@@ -253,7 +253,7 @@
         let swiperMainElement = document.querySelector('.swiper-main .swiper-wrapper');
 
         for (let i = 0; i < extendedMilestones.length; i++) {
-          swiperMainElement.innerHTML += `          
+          swiperMainElement.innerHTML += `
             <div class="swiper-slide bg-light-dark">
             <div class="container overflow-hidden">
               <div class="title-area position-relative">
@@ -280,14 +280,23 @@
         const swiperMain = new Swiper('.swiper-main', {
           direction: 'horizontal',
           loop: true,
-          mousewheel: {
-            forceToAxis: false
-          },
+          mousewheel: true,
           initialSlide: milestones.length * 4 || 0,
           slidesPerView: 1,
           autoHeight: true,
           effect: 'fade',
           loopFillGroupWithBlank: true,
+          simulateTouch: true,
+          // On scroll down on mobile device go to next slide if scroll up on mobile device go to previous slide
+          on: {
+            scroll: function () {
+              if (this.isBeginning) {
+                this.slideNext();
+              } else if (this.isEnd) {
+                this.slidePrev();
+              }
+            }
+          },
           pagination: {
             el: '.swiper-pagination',
             loopFillGroupWithBlank: true,
@@ -297,7 +306,7 @@
               return `<div class="${className} color-light-gray user-select-none" style="width: 10px;">
                             <div class="d-flex flex-column align-items-center">
                                 <div class="date-border" style="background-color: #d9d9d9; width: 1px"></div>
-                                <div class="date-text fw-light" style="margin-top: 5px">${extendedMilestones[index].year}</div>    
+                                <div class="date-text fw-light" style="margin-top: 5px">${extendedMilestones[index].year}</div>
                             </div>
                     </div>`;
             }
