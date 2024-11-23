@@ -277,7 +277,9 @@
           direction: 'horizontal',
           // direction: 'vertical',
           loop: true,
-          mousewheel: true,
+          mousewheel: {
+            releaseOnEdges: true
+          },
           initialSlide: milestones.length * 4 || 0,
           slidesPerView: 1,
           // autoHeight: true,
@@ -285,6 +287,7 @@
           effect: 'fade',
           loopFillGroupWithBlank: true,
           simulateTouch: true,
+
           // On scroll down on mobile device go to next slide if scroll up on mobile device go to previous slide
           on: {
             scroll: function () {
