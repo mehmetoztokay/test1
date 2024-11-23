@@ -31,12 +31,8 @@
 
       .swiper-main {
         width: 100%;
-        /* height: 300px; */
-      }
-
-      .swiper-nav {
-        /* width: 30%; */
-        width: 100%;
+        /* height: 700px; */
+        touch-action: pan-x;
       }
 
       .swiper-pagination-bullet .date-text {
@@ -49,7 +45,7 @@
       }
 
       .swiper-pagination-bullet .date-border {
-        opacity: 0.5;
+        opacity: 0.8;
         filter: blur(1px);
         border-radius: 5px;
         height: 15px;
@@ -279,11 +275,13 @@
         // Swiper for main content
         const swiperMain = new Swiper('.swiper-main', {
           direction: 'horizontal',
+          // direction: 'vertical',
           loop: true,
           mousewheel: true,
           initialSlide: milestones.length * 4 || 0,
           slidesPerView: 1,
-          autoHeight: true,
+          // autoHeight: true,
+          // calculateHeight: true,
           effect: 'fade',
           loopFillGroupWithBlank: true,
           simulateTouch: true,
